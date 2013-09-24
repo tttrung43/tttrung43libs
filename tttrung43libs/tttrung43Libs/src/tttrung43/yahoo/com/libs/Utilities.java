@@ -1,10 +1,14 @@
 package tttrung43.yahoo.com.libs;
+
 /*
  * Name: Tran Thanh Trung
  * Email: tttrung43@gmail.com
  * Date: 09/20/2013 
  * From: Sai Gon
  */
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.net.HttpURLConnection;
@@ -19,6 +23,7 @@ import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
+import android.util.Log;
 
 public class Utilities {
 
@@ -65,13 +70,35 @@ public class Utilities {
 	public Bitmap Link2Image(String imgLink) {
 		try {
 			URL url = new URL(imgLink);
-			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-			conn.connect();						
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.connect();
 			Bitmap bit = BitmapFactory.decodeStream(conn.getInputStream());
 			conn.disconnect();
 			return bit;
 		} catch (Exception e) {
 			return null;
+		}
+	}
+
+	public void SaveImage(String mUrl, String storage) {
+		try {
+			URL url = new URL(mUrl);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.connect();
+			if (conn.getResponseCode() != 404) {
+				File file = new File(storage);
+				FileOutputStream outputstream = new FileOutputStream(file);
+				int read = 0;
+				byte[] data = new byte[1024];
+				InputStream input = conn.getInputStream();
+				while ((read = input.read(data)) != -1) {
+					outputstream.write(data, 0, read);
+				}
+				input.close();
+				outputstream.close();
+				conn.disconnect();
+			}
+		} catch (Exception e) {
 		}
 	}
 }
