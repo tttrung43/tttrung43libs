@@ -1,5 +1,10 @@
 package tttrung43.yahoo.com.libs;
-
+/*
+ * Name: Tran Thanh Trung
+ * Email: tttrung43@gmail.com
+ * Date: 09/20/2013 
+ * From: Sai Gon
+ */
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
