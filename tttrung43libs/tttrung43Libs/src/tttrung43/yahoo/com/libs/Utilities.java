@@ -20,6 +20,7 @@ import java.util.Locale;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
@@ -71,11 +72,12 @@ public class Utilities {
 		try {
 			URL url = new URL(imgLink);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.connect();
-			Bitmap bit = BitmapFactory.decodeStream(conn.getInputStream());
+			conn.connect();			
+			Bitmap bit = BitmapFactory.decodeStream(conn.getInputStream());			
 			conn.disconnect();
 			return bit;
 		} catch (Exception e) {
+			Log.i("Error",e.getMessage());
 			return null;
 		}
 	}
