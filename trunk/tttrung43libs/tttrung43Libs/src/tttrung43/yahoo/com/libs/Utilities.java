@@ -80,7 +80,7 @@ public class Utilities {
 		}
 	}
 
-	public void SaveImage(String mUrl, String storage) {
+	public void SaveFile(String mUrl, String storage) {
 		try {
 			URL url = new URL(mUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
