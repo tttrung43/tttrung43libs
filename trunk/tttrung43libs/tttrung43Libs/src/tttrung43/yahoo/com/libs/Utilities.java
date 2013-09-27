@@ -73,10 +73,8 @@ public class Utilities {
 			URL url = new URL(imgLink);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.connect();													
-            return BitmapFactory.decodeStream(conn.getInputStream());			
-			
-		} catch (Exception e) {
-			Log.i("Error",e.getMessage());
+            return BitmapFactory.decodeStream(conn.getInputStream());						
+		} catch (Exception e) {			
 			return null;
 		}
 	}
