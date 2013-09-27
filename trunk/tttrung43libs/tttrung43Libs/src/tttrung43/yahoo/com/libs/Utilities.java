@@ -69,14 +69,12 @@ public class Utilities {
 	}
 
 	public Bitmap Link2Image(String imgLink) {
-		try {
-			Bitmap bit = null;
+		try {				
 			URL url = new URL(imgLink);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.connect();			
-			 bit = BitmapFactory.decodeStream(conn.getInputStream());			
-			conn.disconnect();
-			return bit;
+			conn.connect();													
+            return BitmapFactory.decodeStream(conn.getInputStream());			
+			
 		} catch (Exception e) {
 			Log.i("Error",e.getMessage());
 			return null;
