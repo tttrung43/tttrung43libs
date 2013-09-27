@@ -70,10 +70,11 @@ public class Utilities {
 
 	public Bitmap Link2Image(String imgLink) {
 		try {
+			Bitmap bit = null;
 			URL url = new URL(imgLink);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.connect();			
-			Bitmap bit = BitmapFactory.decodeStream(conn.getInputStream());			
+			 bit = BitmapFactory.decodeStream(conn.getInputStream());			
 			conn.disconnect();
 			return bit;
 		} catch (Exception e) {
