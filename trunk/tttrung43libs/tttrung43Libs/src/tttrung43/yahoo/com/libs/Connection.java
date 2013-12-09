@@ -25,6 +25,10 @@ public class Connection extends SQLiteOpenHelper{
 		DB_PATH="/data/data/"+context.getPackageName()+"/databases/";
 		DB_NAME = dbName;
 	}
+	
+	public void SetDbPath(String dbpath){
+		DB_PATH = dbpath;
+	}
 
 	
 	public void createDatabase(){
