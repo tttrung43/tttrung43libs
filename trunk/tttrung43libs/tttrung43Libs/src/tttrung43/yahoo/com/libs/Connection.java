@@ -15,8 +15,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class Connection extends SQLiteOpenHelper{
-	private static String DB_PATH ="";
-	private static String DB_NAME;	
+	private String DB_PATH ="";
+	private String DB_NAME;	
 	private Context myContext;
 
 	public Connection(Context context, String dbName) {
