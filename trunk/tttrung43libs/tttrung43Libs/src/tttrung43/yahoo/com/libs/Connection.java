@@ -28,6 +28,8 @@ public class Connection extends SQLiteOpenHelper{
 	
 	public Connection(Context context,String dbname, String path){
 		super(context, path+dbname, null, 1);
+		DB_PATH = path;
+		DB_NAME =dbname;
 	}
 
 	
