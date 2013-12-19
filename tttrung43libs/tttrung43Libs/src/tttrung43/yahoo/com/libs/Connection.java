@@ -58,20 +58,19 @@ public class Connection extends SQLiteOpenHelper{
 	public void copyDatabase()
 	{
 		try {
-			InputStream myInput = myContext.getAssets().open(DB_NAME);			
-			String filename=DB_PATH+DB_NAME;
+			InputStream myInput = myContext.getResources().getAssets().open(DB_NAME);			
+			String filename=DB_PATH+DB_NAME;			
 			OutputStream myOutput = new FileOutputStream(filename);
-			byte[] buffer = new byte[100];
+			byte[] buffer = new byte[1024];
 			int length;
 			while((length=myInput.read(buffer))>0){
-				myOutput.write(buffer,0,length);
+				myOutput.write(buffer,0,length);				
 			}
 			myOutput.flush();
 			myOutput.close();
 			myInput.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (IOException e) { 
+			e.printStackTrace();			
 		}
 		
 	}

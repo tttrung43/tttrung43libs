@@ -8,7 +8,9 @@ package tttrung43.yahoo.com.libs;
  */
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.net.HttpURLConnection;
@@ -98,6 +100,23 @@ public class Utilities {
 				conn.disconnect();
 			}
 		} catch (Exception e) {
+		}
+	}
+	
+	public void CopyFile(Context context, String src, String desc){
+		try {
+			InputStream myInput = context.getResources().getAssets().open(src);						
+			OutputStream myOutput = new FileOutputStream(desc);
+			byte[] buffer = new byte[1024];
+			int length;
+			while((length=myInput.read(buffer))>0){
+				myOutput.write(buffer,0,length);				
+			}
+			myOutput.flush();
+			myOutput.close();
+			myInput.close();
+		} catch (IOException e) { 
+			e.printStackTrace();			
 		}
 	}
 }
