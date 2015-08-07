@@ -103,7 +103,7 @@ public class Utilities {
 		}
 	}
 	
-	public void CopyFile(Context context, String src, String desc){
+	public boolean CopyFile(Context context, String src, String desc){
 		try {
 			InputStream myInput = context.getResources().getAssets().open(src);						
 			OutputStream myOutput = new FileOutputStream(desc);
@@ -115,8 +115,10 @@ public class Utilities {
 			myOutput.flush();
 			myOutput.close();
 			myInput.close();
+			return true;
 		} catch (IOException e) { 
-			e.printStackTrace();			
+			e.printStackTrace();
+			return false;
 		}
 	}
 }
