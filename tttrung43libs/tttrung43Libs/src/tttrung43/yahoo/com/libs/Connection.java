@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -22,7 +23,8 @@ public class Connection extends SQLiteOpenHelper{
 	public Connection(Context context, String dbName) {
 		super(context, dbName, null, 1);
 		this.myContext = context;
-		DB_PATH="/data/data/"+context.getPackageName()+"/databases/";
+		ContextWrapper cw = new ContextWrapper(context);
+		DB_PATH= cw.getDatabasePath(dbName).getParent();
 		DB_NAME = dbName;
 	}
 	
